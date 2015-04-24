@@ -9,3 +9,7 @@ At 10:00 we get data.
 Due at 3:00. 
 
 
+## Possible ideas to implement
+
+1. Highlight certain words somehow in a different color? Names, possibly also words of praise or verbs, positive emotions...
+2. Place quotes in a separate file instead of script.js.
