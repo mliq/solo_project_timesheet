@@ -1,4 +1,4 @@
-var i = 0;
+var i = 0, j = 0;
 var namesArray = ["Erik", "Alicia", "Brian", "Casie", "Chelsea", "Clare", "Cody", "Jeanne", "Kaitlin", "Kelly", "Michael", "Luke", "Mary", "Aaron", "Michelle", "Rom", "Steve", "Terry", "Tracy", "Vince"];
 
 var quotesArray = ["Scott for sitting down with me today. Tracy, Vince for talking to me after I shared my story. They were supportive. ",
@@ -91,14 +91,25 @@ var quotesArray = ["Scott for sitting down with me today. Tracy, Vince for talki
 
 $(document).ready(function(){
 
+    // Every 6 seconds:
     setInterval(function() {
+        // Fade out the quote over 2 seconds
         $('#quote').fadeOut(2000);
+        // Delay 2 seconds for fading in new quote to allow fade out to transpire.
         window.setTimeout(function(){
+            // Add new quote hidden.
             $('#results').delay(2000).html("<p style='display: none' id='quote'>" + quotesArray[i] + "</p>");
+            // Highlight any names.
+            for(j = 0; j < namesArray.length; j++){
+                $('#quote').highlight(namesArray[j]);
+            }
+            //console.log($( "p" ).text( arr.join( ", " ) ));
+            // Fade in new quote over 2 seconds.
             $('#quote').fadeIn(2000);
-            console.log(quotesArray[i]);
+            // Increment index
             i++;
-            if(i==quotesArray.length){i=0};
+            // If index reaches end, reset to 0.
+            if(i==quotesArray.length){i=0;}
         },2000);
     }, 6000);
 

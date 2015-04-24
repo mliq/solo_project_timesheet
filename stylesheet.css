@@ -1,7 +1,7 @@
 #results {
     float:left;
     width: 90%;
-    height: 300px; /*auto?*/
+    height: 450px; /*auto?*/
     margin: 35px 20px;
     background-color: white;
     border: 2px solid black;
@@ -13,4 +13,10 @@
 
 #quote {
     font-size: 30px;
+}
+
+.highlight {
+    font-size=+5px;
+    color: orangered;
+    /*background-color: black;*/
 }
