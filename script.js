@@ -10,22 +10,21 @@ $.ajax({
     success: function(data) {
         quotesArray = data.split('\n');
         // Process Data
-        console.log(quotesArray);
         quotesArray = highlight(quotesArray,namesArray);
-        console.log(quotesArray);
+        // Display
+        $(document).ready(function(){
+            display();
+        });
     }
 });
 
 function highlight(replaceThese, withThese){
 /*
 This function takes an array of text and finds words listed in a second array to add a 'highlight' class to them which can then be styled.
-Case insensitive, but will not find the strings inside of other words. ("rom" matches "Rom" but not "from").
-If you know regex, you can modify this aspect.
+Case insensitive, but will not find the strings inside of other words. ("rom" matches "Rom", placed anywhere in a line, but not the rom in "from").
+You can modify this aspect by altering the RegExp object that is assigned to 'pattern'.
 */
 
-    /*BUGS: Using just replaceThese does not do anything.(even setting array equal to it).
-
-    */
     // Declare variables
     var i = 0, j = 0, pattern, addHighlight;
     var newArray = [];
@@ -45,47 +44,30 @@ If you know regex, you can modify this aspect.
             newArray[i] = newArray[i].replace(pattern,addHighlight);
         }
     }
-    console.log(newArray);
     return newArray;
 }
 
-
-//console.log(quotesArray);
-
-$(document).ready(function(){
-    //console.log(quotesArray);
-    //
-    // Every 6 seconds:
-    //setInterval(function() {
+function display() {
+    var i = 0;
+    //Every 6 seconds:
+    setInterval(function () {
         // Fade out the quote over 2 seconds
-        //$('#quote').fadeOut(2000);
+        $('#quote').fadeOut(2000);
         // Delay 2 seconds for fading in new quote to allow fade out to transpire.
-        //window.setTimeout(function(){
-    //
-    //
-    //        // Store quote to string
-    //        str = quotesArray[i];
-    //
-    //        // Use regex to find names, if found add a span with class .highlight
-    //        for(j = 0; j < namesArray.length; j++) {
-    //            //str.replace(/(\b|^)rom/gi,"yay");
-    //            // Set search pattern from array[j]
-    //            pattern = new RegExp('\(\\b|^\)'+namesArray[j],'gi');
-    //            // Set what we will replace to add highlighing.
-    //            addHighlight = "<span class='highlight'>"+namesArray[j]+"</span>";
-    //            str = str.replace(pattern,addHighlight);
-    //        }
-    //        // Add new quote hidden.
-    //        $('#results').delay(2000).html("<p style='display: none' id='quote'>" + str + "</p>");
-    //
-    //        // Fade in new quote over 2 seconds.
-    //        $('#quote').fadeIn(2000);
-    //
-    //        // Increment index
-    //        i++;
-    //        // If index reaches end, reset to 0.
-    //        if(i==quotesArray.length){i=0;}
-    //    },2000);
-    //}, 6000);
+        window.setTimeout(function () {
+            // Add new quote hidden.
+            $('#results').delay(2000).html("<p style='display: none' id='quote'>" + quotesArray[i] + "</p>");
 
-});
+            // Fade in new quote over 2 seconds.
+            $('#quote').fadeIn(2000);
+
+            // Increment index
+            i++;
+            // If index reaches end, reset to 0.
+            if (i == quotesArray.length) {
+                i = 0;
+            }
+        }, 2000);
+    }, 6000);
+}
+
