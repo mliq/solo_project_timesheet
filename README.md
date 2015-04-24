@@ -9,7 +9,14 @@ At 10:00 we get data.
 Due at 3:00. 
 
 
+## Ideas implemented
+1. Cycles through list of quotes with fade in then out every few seconds.
+2. Highlight names in a different color.
+3. Place quotes in a separate file and load into memory.
+
 ## Possible ideas to implement
 
-1. Highlight certain words somehow in a different color? Names, possibly also words of praise or verbs, positive emotions...
-2. Place quotes in a separate file instead of script.js.
+- Make words wrap as necessary so box can stay constant size?
+- Cooler animations?
+- Highlight words of praise or verbs, positive emotions, in another color?
+
