@@ -3,5 +3,12 @@ var namesArray = ["Erik", "Alicia", "Brian", "Casie", "Chelsea", "Clare", "Cody"
 
 $(document).ready(function(){
 
+    setInterval(function() {
+        $('#results').html("<p style='display: none' id='quote'>" + namesArray[i] + "</p>");
+        $('#quote').fadeIn(1000);
+        console.log(namesArray[i]);
+        i++;
+        if(i==namesArray.length){i=0};
+    }, 4000);
 
 });
